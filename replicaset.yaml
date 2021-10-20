@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myreplicaset
+  labels:
+    app: yuval_app
+    type: frontend
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      type: frontend
+  template:
+    metadata:
+      name: nginx-2
+      labels:
+        type: frontend
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
